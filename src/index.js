@@ -230,8 +230,14 @@ var index = (function () {
 
 
 
+    function _isCJK(char) {
+        return char >= 0x4E00 && char <= 0x9FFF;
+    }
+
+
+
     function updateSDF(canvas, ctx) {
-        var chars = 'abc123-泽材灭逐莫笔亡鲜词圣择寻厂睡博勒烟授诺伦岸奥唐卖俄炸载洛健堂旁宫喝借君禁阴园谋宋避抓荣姑孙逃牙束跳顶玉镇雪午练迫爷篇肉嘴馆遍凡础洞卷坦牛宁纸诸训私庄祖丝翻暴森塔默握戏隐熟骨访弱蒙歌店鬼软典欲萨伙遭盘爸扩盖弄雄稳忘亿刺拥徒姆杨齐赛趣曲刀床迎冰虚玩析窗醒妻透购替塞努休虎扬途侵刑绿兄迅套贸毕唯谷轮库迹尤竞街促延震弃甲伟麻川申缓潜闪售灯针哲络抵朱埃抱鼓植纯夏忍页杰筑折郑贝尊吴秀混臣雅振染盛怒舞圆搞狂措姓残秋培迷诚宽宇猛摆梅毁伸摩盟末乃悲拍丁赵硬麦蒋操耶阻订彩抽赞魔纷沿喊违妹浪汇币丰蓝殊献桌啦瓦莱援译夺汽烧距裁偏符勇触课敬哭懂墙袭召罚侠厅拜巧侧韩冒债曼融惯享戴童犹乘挂奖绍厚纵障讯涉彻刊丈爆乌役描洗玛患妙镜唱烦签仙彼弗症仿倾牌陷鸟轰咱菜闭奋庆撤泪茶疾缘播朗杜奶季丹狗尾仪偷奔珠虫驻孔宜艾桥淡翼恨繁寒伴叹旦愈潮粮缩罢聚径恰挑袋灰捕徐珍幕映裂泰隔启尖忠累炎暂估泛荒偿横拒瑞忆孤鼻闹羊呆厉衡胞零穷舍码赫婆魂灾洪腿胆津俗辩胸晓劲贫仁偶辑邦恢赖圈摸仰润堆碰艇稍迟辆废净凶署壁御奉旋冬矿抬蛋晨伏吹鸡倍糊秦盾杯租骑乏隆诊奴摄丧污渡旗甘耐凭扎抢绪粗肩梁幻菲皆碎宙叔岩荡综爬荷悉蒂返井壮薄悄扫敏碍殖详迪矛霍允幅撒剩凯颗骂赏液番箱贴漫酸郎腰舒眉忧浮辛恋餐吓挺励辞艘键伍峰尺昨黎辈贯侦滑券崇扰宪绕趋慈乔阅汗枝拖墨胁插箭腊粉泥氏彭拔骗凤慧媒佩愤扑龄驱惜豪掩兼跃尸肃帕驶堡届欣惠册储飘桑闲惨洁踪勃宾频仇磨递邪撞拟滚奏巡颜剂绩贡疯坡瞧截燃焦殿伪柳锁逼颇昏劝呈搜勤戒驾漂饮曹朵仔柔俩孟腐幼践籍牧凉牲佳娜浓芳稿竹腹跌逻垂遵脉貌柏狱猜怜惑陶兽帐饰贷昌叙躺钢沟寄扶铺邓寿惧询汤盗肥尝匆辉奈扣廷澳嘛董迁凝慰厌脏腾幽怨鞋丢埋泉涌辖躲晋紫艰魏吾慌祝邮吐狠鉴曰械咬邻赤挤弯椅陪割揭韦悟聪雾锋梯猫祥阔誉筹丛牵鸣沈阁穆屈旨袖猎臂蛇贺柱抛鼠瑟戈牢逊迈欺吨琴衰瓶恼燕仲诱狼池疼卢仗冠粒遥吕玄尘冯抚浅敦纠钻晶岂峡苍喷耗凌敲菌赔涂粹扁亏寂煤熊恭湿循暖糖赋抑秩帽哀宿踏烂袁侯抖夹昆肝擦猪炼恒慎搬纽纹玻渔磁铜齿跨押怖漠疲叛遣兹祭醉拳弥斜档稀捷肤疫肿豆削岗晃吞宏癌肚隶履涨耀扭坛拨沃绘伐堪仆郭牺歼墓雇廉契拼惩捉覆刷劫嫌瓜歇雕闷乳串娃缴唤赢莲霸桃妥瘦搭赴岳嘉舱俊址庞耕锐缝悔邀玲惟斥宅添挖呵讼氧浩羽斤酷掠妖祸侍乙妨贪挣汪尿莉悬唇翰仓轨枚盐览傅帅庙芬屏寺胖璃愚滴疏萧姿颤丑劣柯寸扔盯辱匹俱辨饿蜂哦腔郁溃谨糟葛苗肠忌溜鸿爵鹏鹰笼丘桂滋聊挡纲肌茨壳痕碗穴膀卓贤卧膜毅锦欠哩函';
+        var chars = 'abc123- 泽材灭逐莫笔亡鲜词圣择寻厂睡博勒烟授诺伦岸奥唐卖俄炸载洛健堂旁宫喝借君禁阴园谋宋避抓荣姑孙逃牙束跳顶玉镇雪午练迫爷篇肉嘴馆遍凡础洞卷坦牛宁纸诸训私庄祖丝翻暴森塔默握戏隐熟骨访弱蒙歌店鬼软典欲萨伙遭盘爸扩盖弄雄稳忘亿刺拥徒姆杨齐赛趣曲刀床迎冰虚玩析窗醒妻透购替塞努休虎扬途侵刑绿兄迅套贸毕唯谷轮库迹尤竞街促延震弃甲伟麻川申缓潜闪售灯针哲络抵朱埃抱鼓植纯夏忍页杰筑折郑贝尊吴秀混臣雅振染盛怒舞圆搞狂措姓残秋培迷诚宽宇猛摆梅毁伸摩盟末乃悲拍丁赵硬麦蒋操耶阻订彩抽赞魔纷沿喊违妹浪汇币丰蓝殊献桌啦瓦莱援译夺汽烧距裁偏符勇触课敬哭懂墙袭召罚侠厅拜巧侧韩冒债曼融惯享戴童犹乘挂奖绍厚纵障讯涉彻刊丈爆乌役描洗玛患妙镜唱烦签仙彼弗症仿倾牌陷鸟轰咱菜闭奋庆撤泪茶疾缘播朗杜奶季丹狗尾仪偷奔珠虫驻孔宜艾桥淡翼恨繁寒伴叹旦愈潮粮缩罢聚径恰挑袋灰捕徐珍幕映裂泰隔启尖忠累炎暂估泛荒偿横拒瑞忆孤鼻闹羊呆厉衡胞零穷舍码赫婆魂灾洪腿胆津俗辩胸晓劲贫仁偶辑邦恢赖圈摸仰润堆碰艇稍迟辆废净凶署壁御奉旋冬矿抬蛋晨伏吹鸡倍糊秦盾杯租骑乏隆诊奴摄丧污渡旗甘耐凭扎抢绪粗肩梁幻菲皆碎宙叔岩荡综爬荷悉蒂返井壮薄悄扫敏碍殖详迪矛霍允幅撒剩凯颗骂赏液番箱贴漫酸郎腰舒眉忧浮辛恋餐吓挺励辞艘键伍峰尺昨黎辈贯侦滑券崇扰宪绕趋慈乔阅汗枝拖墨胁插箭腊粉泥氏彭拔骗凤慧媒佩愤扑龄驱惜豪掩兼跃尸肃帕驶堡届欣惠册储飘桑闲惨洁踪勃宾频仇磨递邪撞拟滚奏巡颜剂绩贡疯坡瞧截燃焦殿伪柳锁逼颇昏劝呈搜勤戒驾漂饮曹朵仔柔俩孟腐幼践籍牧凉牲佳娜浓芳稿竹腹跌逻垂遵脉貌柏狱猜怜惑陶兽帐饰贷昌叙躺钢沟寄扶铺邓寿惧询汤盗肥尝匆辉奈扣廷澳嘛董迁凝慰厌脏腾幽怨鞋丢埋泉涌辖躲晋紫艰魏吾慌祝邮吐狠鉴曰械咬邻赤挤弯椅陪割揭韦悟聪雾锋梯猫祥阔誉筹丛牵鸣沈阁穆屈旨袖猎臂蛇贺柱抛鼠瑟戈牢逊迈欺吨琴衰瓶恼燕仲诱狼池疼卢仗冠粒遥吕玄尘冯抚浅敦纠钻晶岂峡苍喷耗凌敲菌赔涂粹扁亏寂煤熊恭湿循暖糖赋抑秩帽哀宿踏烂袁侯抖夹昆肝擦猪炼恒慎搬纽纹玻渔磁铜齿跨押怖漠疲叛遣兹祭醉拳弥斜档稀捷肤疫肿豆削岗晃吞宏癌肚隶履涨耀扭坛拨沃绘伐堪仆郭牺歼墓雇廉契拼惩捉覆刷劫嫌瓜歇雕闷乳串娃缴唤赢莲霸桃妥瘦搭赴岳嘉舱俊址庞耕锐缝悔邀玲惟斥宅添挖呵讼氧浩羽斤酷掠妖祸侍乙妨贪挣汪尿莉悬唇翰仓轨枚盐览傅帅庙芬屏寺胖璃愚滴疏萧姿颤丑劣柯寸扔盯辱匹俱辨饿蜂哦腔郁溃谨糟葛苗肠忌溜鸿爵鹏鹰笼丘桂滋聊挡纲肌茨壳痕碗穴膀卓贤卧膜毅锦欠哩函';
 
 
 
@@ -248,6 +254,7 @@ var index = (function () {
 
 
 
+        var ctx = document.createElement("canvas").getContext("2d");
 
 
 
@@ -285,7 +292,53 @@ var index = (function () {
                 rowBins.push(sdf.draw(chars[i]));
 
                 // ctx.putImageData(makeRGBAImageData(ctx, sdf.draw(chars[i]), sdf.size), x, y);
-                sdfs[chars[i]] = { x: x, y: y };
+
+
+                // type fntCharData = {
+                //     id: int,
+                //     rect,
+                //     xOffset: int,
+                //     yOffset: int,
+                //     xAdvance: int,
+                //     /* page:number; */
+                // };
+
+                var id = chars[i].charCodeAt(0);
+
+                var isCJK = _isCJK(id);
+
+
+
+                var buf = fontSize / 8;
+                // var buf = 0;
+
+                // TODO width should < advance???
+
+                var width = fontSize + buf * 2; // glyph width
+                var height = fontSize + buf * 2; // glyph height
+
+                // TODO perf: optimize for min!
+                var ad = ctx.measureText(chars[i]).width * fontSize / 12 < fontSize / 2 ? fontSize / 2 : ctx.measureText(chars[i]).width * fontSize / 12;
+
+
+                var by = fontSize / 2 + buf; // bearing y
+
+                sdfs[chars[i]] = {
+                    id,
+                    x: x,
+                    y: y,
+                    // width: fontSize,
+                    // height: fontSize,
+                    width,
+                    height,
+                    // advance: isCJK ? fontSize : ctx.measureText(chars[i]).width * 2,
+                    advance: isCJK ? fontSize :
+                        // ctx.measureText(chars[i]).width * fontSize/12,
+                        ad,
+                    // fontSize * 14 / 24,
+                    xOffset: 0,
+                    yOffset: by,
+                };
 
 
                 // alphaSDFImageData.concat(
@@ -378,10 +431,6 @@ var index = (function () {
         ]];
     }
 
-    function isCJK(char) {
-        return char >= 0x4E00 && char <= 0x9FFF;
-    }
-
 
     function drawText(sdfs, str, size,
 
@@ -397,29 +446,57 @@ var index = (function () {
 
         var fontsize = 32;
         // var fontsize = +getEl('fontsize').value;
-        var buf = fontsize / 8;
+        // var buf = fontsize / 8;
+        // var buf = 0;
 
         // TODO width should < advance???
 
-        var width = fontsize + buf * 2; // glyph width
-        var height = fontsize + buf * 2; // glyph height
-        var bx = 0; // bearing x
-        var by = fontsize / 2 + buf; // bearing y
+        // var width = fontsize + buf * 2; // glyph width
+        // var height = fontsize + buf * 2; // glyph height
+        // var bx = 0; // bearing x
+        // var by = fontsize / 2 + buf; // bearing y
+
+
 
 
 
         // var advance = fontsize; // advance
 
         var scale = size / fontsize;
-        var lineWidth = str.length * fontsize * scale;
+        // var lineWidth = str.length * fontsize * scale;
 
-        var pen = { x: canvas.width / 2 - lineWidth / 2, y: canvas.height / 2 };
+        // var pen = { x: canvas.width / 2 - lineWidth / 2, y: canvas.height / 2 };
+        var pen = { x: 0, y: canvas.height / 2 };
+
+
         for (var i = 0; i < str.length; i++) {
 
-            var advance = isCJK(str[i].charCodeAt(0)) ? fontsize : fontsize * 14 / 24;
+            // var advance = isCJK(str[i].charCodeAt(0)) ? fontsize : fontsize * 14 / 24;
+
+
+
+
+
+
+
+
+
+
+
 
             var posX = sdfs[str[i]].x; // pos in sprite x
             var posY = sdfs[str[i]].y; // pos in sprite y
+
+
+            var width = sdfs[str[i]].width;
+            var height = sdfs[str[i]].height;
+            var advance = sdfs[str[i]].advance;
+
+            var bx = sdfs[str[i]].xOffset;
+            var by = sdfs[str[i]].yOffset;
+
+            var buf = 0;
+
 
             vertexElements.push(
                 pen.x + ((bx - buf) * scale), pen.y - by * scale,
@@ -660,7 +737,7 @@ var index = (function () {
 
 
 
-                var str = "12a泽材灭逐莫笔亡鲜词圣择寻厂睡博";
+                var str = "12ab -泽材灭逐莫笔亡鲜词圣择寻厂睡博";
 
 
 
@@ -683,3 +760,5 @@ var index = (function () {
         }
     }
 }());
+
+// TODO perf: generate indices buffer
