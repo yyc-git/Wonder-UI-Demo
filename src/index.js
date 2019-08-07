@@ -444,7 +444,7 @@ var index = (function () {
         var vertexElements = [];
         var textureElements = [];
 
-        var fontsize = 32;
+        // var fontsize = 32;
         // var fontsize = +getEl('fontsize').value;
         // var buf = fontsize / 8;
         // var buf = 0;
@@ -462,7 +462,10 @@ var index = (function () {
 
         // var advance = fontsize; // advance
 
-        var scale = size / fontsize;
+
+        // TODO remove scale
+        // var scale = size / fontsize;
+        var scale = 1;
         // var lineWidth = str.length * fontsize * scale;
 
         // var pen = { x: canvas.width / 2 - lineWidth / 2, y: canvas.height / 2 };
