@@ -611,6 +611,150 @@ var index = (function () {
     }
 
 
+
+    var canvas = document.getElementById("canvas3"),
+        // context = canvas.getContext("2d"),
+        textarea = $("#textarea");
+    // fontSelect = document.getElementById("fontSelect"),
+    // sizeSelect = document.getElementById("sizeSelect"),
+    // cursor = new TextCursor();
+
+
+    function isTypingChinese(keyCode) {
+        return keyCode === 229;
+    }
+
+    function hasChinese() {
+        return textarea.val().match(/[\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]+/) !== null;
+    }
+
+    function insertChinese() {
+        insertToLine(textarea.val());
+    }
+
+    function eraseTextarea() {
+        textarea.val("");
+    }
+
+    function isBackspace(keyCode) {
+        return keyCode === 8;
+    }
+
+    function insertToLine(key) {
+        context.save();
+
+        line.erase(context, imageData);
+        line.insert(key);
+
+        moveCursor(line.left + line.getWidth(context), line.bottom);
+
+        line.draw(context);
+
+        context.restore();
+    }
+
+
+    var inputEnglishChar = "";
+
+    function prepareForTextArea() {
+
+
+        $(canvas).on("mousedown", function (e) {
+            e.preventDefault();
+
+            textarea.val("");
+            textarea.focus();
+        });
+
+
+
+        $(document).on("keydown", function (e) {
+            // e.preventDefault();
+
+            // textarea.val("");
+            // textarea.focus();
+
+
+            if (isTypingChinese(e.keyCode)) {
+                console.log("is hasChinese")
+                // setTextareaPos();
+                // textarea.val("")
+
+                // eraseTextarea();
+                return;
+            }
+
+
+
+            // textarea.val(
+            //     textarea.val() + String.fromCharCode(e.which)
+            // );
+
+            // eraseTextarea();
+        });
+
+
+        $(document).on("keypress", function (e) {
+            // insertToLine(String.fromCharCode(e.which));
+
+
+            // if (isTypingChinese(e.keyCode)) {
+            //     console.log("is hasChinese")
+            //     // setTextareaPos();
+            //     // textarea.val("")
+
+            //     eraseTextarea();
+            //     return;
+            // }
+
+            // console.log("keypress")
+
+            inputEnglishChar = String.fromCharCode(e.which);
+        });
+
+
+    }
+
+    // var Line = (function () {
+    //     var lineChars = [];
+
+    //     return {
+    //         insertChar: (char) => {
+
+    //         },
+    //         getWidth: () => {
+
+    //         },
+    //     };
+    // }());
+
+    function drawFromTextArea() {
+        if (hasChinese()) {
+            // insertChinese();
+
+            console.log(
+                "draw chinese:", textarea.val()
+            );
+
+            eraseTextarea();
+        }
+        else {
+
+            console.log(
+                "draw char:", inputEnglishChar
+            );
+
+        }
+
+
+
+        eraseTextarea();
+        inputEnglishChar = "";
+
+
+    }
+
+
     return {
         main: (sdf_vertex, sdf_fragment) => {
             var canvas = document.getElementById('canvas');
@@ -703,6 +847,7 @@ var index = (function () {
 
 
 
+            prepareForTextArea();
 
 
 
@@ -755,6 +900,13 @@ var index = (function () {
 
                     textureBuffer
                 );
+
+
+
+
+                drawFromTextArea();
+
+
 
                 requestAnimationFrame(_frame);
             };

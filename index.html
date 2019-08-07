@@ -5,6 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>rt</title>
+
+
+    <style>
+        /* .main {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        header{
+            margin-bottom: 50px;
+        }
+
+        .canvasDiv {
+            border: 1px solid black;
+            width: 500px;
+            height: 300px;
+        } */
+
+        .textareaDiv {
+            overflow: hidden;
+            position: absolute;
+            height: 0px;
+            left: 0px;
+            top: 0px;
+        }
+
+        .textareaDiv textarea {
+            position: absolute;
+            padding: 0px;
+            width: 1000px;
+            height: 1em;
+            outline: none;
+            font-size: 4px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -14,10 +50,24 @@
 
 
 
+    <canvas width="900" height="300" id="canvas3" style="position: absolute; top:120px;left:50px;"></canvas>
+
+
+
+    <section class="textareaDiv">
+        <textarea id="textarea" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea>
+    </section>
+
+
+
     <script src="src/lib/utils.js"></script>
     <!-- <script src="src/lib/cuon-matrix.js"></script> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2/gl-matrix-min.js"></script>
+    <script src="src/lib/gl-matrix.js"></script>
+
+
+    <script src="src/lib/jquery.js"></script>
+
     <!-- <script src="src/lib/gl-matrix.js"></script> -->
     <!-- <script src="src/lib/cuon-matrix.js"></script> -->
 
