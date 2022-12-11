@@ -18,7 +18,7 @@
       "devDependencies": {
         "@babel/core": "^7.3.4",
         "@babel/preset-env": "^7.3.4",
-        "express": "^4.16.1",
+        "express": "^4.17.3",
         "gulp": "^3.9.1",
         "gulp-git": "^2.5.0",
         "gulp-sync": "^0.1.4",
